@@ -1,0 +1,147 @@
+/* ordeht.html */
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+/* header */
+
+
+.header{
+    width: 100%;
+    min-height: 100vh;
+    background:linear-gradient(
+        rgba(20,20,20, .5),
+        rgba(20,20,20, .5)),
+        url("https://www.paisley.dariopizzeria.com/SiteContent/Images/HomePageHeader/HomePageHeader_129_68591.jpg") no-repeat fixed center;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    /*padding: 20px 5%;*/
+}
+.ordesec {
+    width: 100%;
+    min-height: 100vh;
+    background:linear-gradient(
+        rgba(20,20,20, .5),
+        rgba(20,20,20, .5)),
+        url("https://cdn.pixabay.com/photo/2020/03/21/02/26/pizza-4952508_960_720.jpg") no-repeat fixed center;
+    position: relative;
+    z-index: 1;
+    background-size: cover;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px 5%;
+}
+.pedir{
+     display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+}
+.pedir h1 {
+    font-family:  "Pacifico", sans-serif;
+    font-size: 90px;
+    color: #fff;
+    margin-top: 0px;
+}
+.pedir h3 {
+    color: #fff;
+    font-size: 38px;
+    font-family: "Montserrat", sans-serif;
+
+}
+.pedir button{
+background: #0088a9;
+    border: none;
+    color: #fff;
+    padding: 22px 42px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 30px 0 0 0;
+
+}
+.pedir button:hover{
+    color: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 16px rgba(49, 138, 172, 1);
+  transition: all 0.2s ease;
+  background-color: red;
+
+}
+/* Formulario */
+
+
+.form-register {
+  width: 400px;
+  background: #632222;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  font-family: 'Montserrat';
+  color: #FADEDE;
+  box-shadow: 2px 13px 37px #343131;
+}
+
+
+.form-register h4 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.controls {
+  width: 100%;
+  background: #2F2929;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid black;
+  font-family: 'Montserrat';
+  font-size: 15px;
+  color: white;
+}
+
+.form-register p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+}
+
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.form-register .botons {
+  width: 100%;
+  background: #FADEDE;
+  border: none;
+  padding: 12px;
+  color: black;
+  margin: 16px 0;
+  font-family: 'Montserrat';
+  font-size: 15px;
+}
+.form-register .botons:hover{
+    cursor: pointer;
+    background-color: #2F2929 ;
+}
