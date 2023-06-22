@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="CSS/csorde.css">
+	<title>Ordenar</title>
+	<div class="header">
+	<div class="pedir">
+		<h1>Bienvenido</h1>
+		<h3>Puedes ordenar aqui</h3>
+		<a href="#ordesec"><button>ORDENAR</button>
+	</div>
+	</div>
+
+	<form action="phpe.php" method="post">
+	<a class="ordesec" id="ordesec">
+	<section class="form-register">
+		   		<h4>Pide tu pizza</h4>
+		    	<input class="controls" type="text" name="nombres" id="nombres" placeholder="Ingrese su Nombre" required="true">
+		   		<input class="controls" type="text" name="Direccion" id="Direccion" placeholder="Ingrese Su Direccion" required="true">
+		   		<input class="controls" type="number" name="Telefono" id="Telefono" placeholder="Ingrese Su Numero De Telefono"required="true">
+		    	<select class="controls" name="pizzas" id="pizzas" required="true">
+  				<option value="1">Peppy Paneer</option>
+  				<option value="2">Mexican Green</option>
+  				<option value="3">Veggie Paradice</option>
+  				<option value="4">Vegetariana</option>
+				</select>
+		    	<input class="controls" type="number" name="numerop" id="numerop" placeholder="Ingrese El Numero De Pizzas" required="true">
+		    	<h4 id="precio1" align="center"></h4>
+		    	<h3 id= "desea" align="center" font-size = "5px"></h3>
+		    	<input class="botons" type="button" value="Ver Precio" onclick="precio()">
+		  		<input class="botons" type="submit" value="Pedir" onclick="eleccion()">
+  	</section>
+  	</a>
+  	</form>
+</head>
+<body>
+	<script type="text/javascript">
+
+	function precio (){
+		var cod = document.getElementById("pizzas").value;
+		var numerop = document.getElementById("numerop").value;
+		if (cod == 1) {
+			document.getElementById("precio1").innerHTML = ("Su precio es " + 11000*numerop +"₡");
+			document.getElementById("desea").innerHTML = "Si desea continuar la compra presione Pedir";
+		}if  (cod == 2) {
+			document.getElementById("precio1").innerHTML = ("Su precio es " + 9800*numerop+ "₡");
+			document.getElementById("desea").innerHTML = "Si desea continuar la compra presione Pedir";
+		}if (cod == 3) {
+			document.getElementById("precio1").innerHTML = ("Su precio es " + 8600*numerop+"₡");
+			document.getElementById("desea").innerHTML = "Si desea continuar la compra presione Pedir";
+		}if (cod == 4) {
+			document.getElementById("precio1").innerHTML = ("Su precio es " + 7500*numerop+"₡");
+			document.getElementById("desea").innerHTML = "Si desea continuar la compra presione Pedir";
+		}
+	}
+	</script>
+
+</body>
+</html>
