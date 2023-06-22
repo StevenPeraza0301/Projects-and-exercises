@@ -1,0 +1,141 @@
+<!--
+	NAME : Loader React
+	DATE : November 5, 2020
+	AUTHOR : lolo
+-->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Loader React</title>
+	</head>
+	<body>
+		<canvas id="cnv"></canvas>
+	</body>
+</html>
+<style>
+body {
+	padding:0;margin:0;
+	overflow:hidden;
+	position: fixed;
+	background-color:#000;
+}
+@keyframes rotate{ 100%{transform:rotate(360deg)}}
+   
+
+
+</style>
+
+<script>
+"use strict";
+
+let W, H, c, ctx;
+let circles = [];
+let load = false;
+
+const random = (max=1, min=0) => Math.random() * (max - min) + min;
+
+const repos = (a,b,c) => a+(b-a)*c;
+
+const circle = {
+	normal(x, y, r, c) {
+		ctx.beginPath();
+		ctx.fillStyle = c;
+		ctx.arc(x+W/2, y+H/2, r, 0, 2*Math.PI);
+		ctx.fill();
+		ctx.closePath();
+	},
+	rotate(x, y, r, c, a){
+		ctx.beginPath();
+		ctx.save();
+		ctx.fillStyle = c;
+		ctx.translate(x+W/2 , y+H/2 );
+		ctx.rotate(a);
+		ctx.arc(x, y, r, 0, 2*Math.PI);
+		ctx.fill();
+		ctx.closePath();
+		ctx.restore();
+	}
+};
+
+class Circle {
+	constructor(radX, radY, a, rotate) {
+		this.radX = radX;
+		this.radY = radY;
+		this.a = a;
+		this.rotate = rotate ;
+		this.x = random(W,-W);
+		this.y = random(H,-H);
+		this.angle = random(Math.PI * 2);
+		this.rad = random(1.5, 0.5);
+		this.sx = random(100);
+		this.sy = 100;
+		this.color = 'hsl(' + random(220, 180) + ', 100%, 50%)';
+	}
+	draw() {
+		if(this.rotate)circle.rotate(this.x, this.y, this.rad, this.color, this.a);
+		else circle.normal(this.x, this.y, this.rad, this.color);
+	}
+	check(){
+	   if(load){
+			this.x = repos(this.x,this.x0,  0.04);
+ 			this.y = repos(this.y,this.y0,  0.04);
+		} 
+		else {
+			this.x = repos(this.x, this.x1, 0.04);
+ 			this.y = repos(this.y, this.y1,  0.04);
+		} 
+	}
+	update() {
+		this.angle += 0.005;
+		this.x0 = this.radX * Math.cos(this.angle);
+		this.y0 = this.radY * Math.sin(this.angle);
+		this.x1 = this.sx * Math.cos(this.angle);
+		this.y1 = this.sy * Math.sin(this.angle);
+	}
+	run(){
+		this.update();
+		this.check();
+		this.draw();
+	}
+}
+
+const createCircles = () =>{
+	let i;
+	for(i=0; i<300; i++){
+		let x = random(130, 120);
+		let y = random(40, 30);
+		circles.push(new Circle(x, y));
+	}
+	for(i=0; i<100; i++){
+		let x = random(25);
+		let y = random(25);
+		circles.push(new Circle(x, y));
+	}
+	for(i=0; i<600; i++){
+		let x = random(120, 110);
+		let y = random(40, 30);
+		let a = i%2===0 ? 2 : -2;
+		circles.push(new Circle(x, y, a, true));
+	}
+};
+
+const animate = () => {
+	ctx.clearRect(0, 0, W, H);
+	circles.forEach(x => x.run());
+	requestAnimationFrame(animate);
+};
+
+const init = () => {
+	c = document.getElementById("cnv");
+	c.width = W = window.innerWidth;
+	c.height = H = window.innerHeight;
+	ctx = c.getContext("2d");
+	createCircles();
+	setInterval(()=>{load = load ? false : true},3500);
+	setTimeout(()=>c.style.animation='rotate 15s linear infinite',3500);	
+	requestAnimationFrame(animate);
+};
+
+onload = init;
+
+</script>
